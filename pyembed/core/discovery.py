@@ -30,12 +30,7 @@ import requests
 
 from pyembed.core.error import PyEmbedError
 
-
-try:  # pragma: no cover
-    from urlparse import parse_qsl, urljoin, urlsplit, urlunsplit
-    from urllib import urlencode
-except ImportError:  # pragma: no cover
-    from urllib.parse import parse_qsl, urljoin, urlsplit, urlunsplit, urlencode
+from urllib.parse import parse_qsl, urljoin, urlsplit, urlunsplit, urlencode
 
 from itertools import product
 
@@ -182,6 +177,9 @@ class StaticDiscoveryEndpoint(object):
         scheme, netloc, path, query_string, fragment = urlsplit(scheme_url)
         netloc_regex = re.compile(netloc.replace('*.', '.*\.?'))
         path_regex = re.compile(path.replace('*', '.*'))
+
+        if scheme not in ("http", "https"):
+            return lambda x: False
 
         return functools.partial(self.__matcher, netloc_regex, path_regex)
 

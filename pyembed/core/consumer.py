@@ -27,11 +27,7 @@ import requests
 from pyembed.core import parse
 from pyembed.core.error import PyEmbedError
 
-try:  # pragma: no cover
-    from urlparse import parse_qsl, urljoin, urlsplit, urlunsplit
-    from urllib import urlencode
-except ImportError:  # pragma: no cover
-    from urllib.parse import parse_qsl, urljoin, urlsplit, urlunsplit, urlencode
+from urllib.parse import parse_qsl, urljoin, urlsplit, urlunsplit, urlencode
 
 
 class PyEmbedConsumerError(PyEmbedError):
