@@ -7,6 +7,7 @@
 
 ✨️ Features:
 -   [pyembed/pyembed #69](https://github.com/pyembed/pyembed/issues/69): Supported [extruct](https://github.com/scrapinghub/extruct) library
+-   Added asynchronous API
 
 > [!IMPORTANT]
 > Below this is the change log for pyembed/pyembed.
