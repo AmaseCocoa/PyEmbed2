@@ -30,7 +30,7 @@ from setuptools.command.test import test as TestCommand
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['pyembed']
+        self.test_args = ['pyembed2']
         self.test_suite = True
 
     def run_tests(self):
@@ -41,51 +41,4 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 
-setup(
-    name='pyembed',
-    version='1.3.3',
-    author='Matt Thomson',
-    author_email='mattjohnthomson@gmail.com',
-    url='http://pyembed.github.io',
-    description='Python OEmbed consumer library with automatic discovery of ' +
-        'producers',
-    long_description=open('README.rst').read() + '\n\n' +
-        open('CHANGES.rst').read(),
-    download_url='https://pypi.python.org/pypi/pyembed/',
-    license=open('LICENSE.txt').read(),
-
-    provides=['pyembed.core'],
-    packages=['pyembed.core'],
-    namespace_packages=['pyembed'],
-
-    package_data={
-        "pyembed.core": [
-            "config/providers.json"
-        ]
-    },
-
-    install_requires=[
-        'beautifulsoup4',
-        'requests'
-    ],
-    tests_require=[
-        'mock',
-        'pytest',
-        'vcrpy'
-    ],
-
-    cmdclass={'test': PyTest},
-
-    classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Developers',
-        'Natural Language :: English',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Topic :: Text Processing'
-    ]
-)
+setup(cmdclass={'test': PyTest})
